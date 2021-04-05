@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Add Course
+            <f:view>
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Code:" for="code" />
+                    <h:inputText id="code" value="#{course.course.code}" title="Code" />
+                    <h:outputLabel value="BookFee:" for="bookFee" />
+                    <h:inputText id="bookFee" value="#{course.course.bookFee}" title="BookFee" />
+                    <h:outputLabel value="Title:" for="title" />
+                    <h:inputText id="title" value="#{course.course.title}" title="Title" />
+                    <h:outputLabel value="Authors:" for="authors" />
+                    <h:inputText id="authors" value="#{course.course.authors}" title="Authors" />
+                    <h:outputLabel value="PublicationYear:" for="publicationYear" />
+                    <h:inputText id="publicationYear" value="#{course.course.publicationYear}" title="PublicationYear" />
+                    <h:outputLabel value="Pages:" for="pages" />
+                    <h:inputText id="pages" value="#{course.course.pages}" title="Pages" />
+                    <h:commandButton type="submit" value="Add book" action="#{course.RegisterCourse()}" />
+                </h:panelGrid>
+            </h:form>
+
+         
+        </f:view> 
+        <h3>Display Courses</h3>
+        <f:view>
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{course.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Code"/>
+                        </f:facet>
+                        <h:outputText value="#{item.code}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="pages"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pages}"/>
+                    </h:column>
+                      <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="authors"/>
+                        </f:facet>
+                          <h:outputText value="#{item.authors}"/>
+                    </h:column>
+                      <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="publication Year"/>
+                        </f:facet>
+                          <h:outputText value="#{item.publicationYear}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="bookFee"/>
+                        </f:facet>
+                        <h:outputText value="#{item.bookFee}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
